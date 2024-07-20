@@ -27,31 +27,29 @@ class BBVersion(TypedDict):
 
 # Fakeboard API
 
-app = FastAPI()
+app = FastAPI(root_path="/learn/api/public)
 
-api = "/learn/api/public/"
-
-@app.get(api + "v1/{userId}/courses")
+@app.get("/v1/{userId}/courses")
 async def get_user_memberships() -> Results[BBMembership]:
     return {"results": []}
 
-@app.get(api + "v3/courses/{courseId}")
+@app.get("/v3/courses/{courseId}")
 async def get_courses() -> BBCourse | Results[BBCourse]:
     return {"results": []}
 
-@app.get(api + "v1/courses/{courseId}/contents/{contentId}")
+@app.get("/v1/courses/{courseId}/contents/{contentId}")
 async def get_contents() -> BBCourseContent | Results[BBCourseContent]:
     return {"results": []}
 
-@app.get(api + "v1/courses/{courseId}/contents/{contentId}/children")
+@app.get("/v1/courses/{courseId}/contents/{contentId}/children")
 async def get_content_children() -> Results[BBCourseContent]:
     return {"results": []}
 
-@app.get(api + "v1/courses/{courseId}/contents/{contentId}/attachments/{attachmentId}")
+@app.get("/v1/courses/{courseId}/contents/{contentId}/attachments/{attachmentId}")
 async def get_file_attachments() -> BBAttachment | Results[BBAttachment]:
     return {"results": []}
 
-@app.get(api + "v1/system/version")
+@app.get("/v1/system/version")
 async def get_version() -> BBVersion:
     return {
         "learn": {
