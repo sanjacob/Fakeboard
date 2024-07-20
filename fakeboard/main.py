@@ -27,7 +27,7 @@ class BBVersion(TypedDict):
 
 # Fakeboard API
 
-app = FastAPI(root_path="/learn/api/public)
+app = FastAPI(root_path="/learn/api/public")
 
 @app.get("/v1/{userId}/courses")
 async def get_user_memberships() -> Results[BBMembership]:
