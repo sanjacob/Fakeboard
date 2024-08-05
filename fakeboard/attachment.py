@@ -4,7 +4,7 @@ from . import db
 
 
 def _create_attachment(attachment):
-    return BBAttachment(id=attachment["id"],
+    return BBAttachment(id=attachment["filename"],
                         fileName=attachment["filename"],
                         mimeType=attachment["mimetype"])
 

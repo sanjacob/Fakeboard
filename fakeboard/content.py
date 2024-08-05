@@ -12,12 +12,15 @@ def _create_content(courseId, contentId):
     return BBCourseContent(
         id=contentId,
         title=content["title"],
-        body=content["body"],
+        body=content.get("body"),
         created=content["created"],
         modified="2024-01-01T12:30:00.000Z",
-        hasChildren=len(content["children"]) > 0,
+        hasChildren=len(content.get("children", [])) > 0,
         availability=BBAvailability(available="Yes"),
-        contentHandler=BBContentHandler(id=content["type"])
+        contentHandler=BBContentHandler(
+            id=content["type"],
+            url=content.get("url")
+        )
     )
 
 

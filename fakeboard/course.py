@@ -15,7 +15,6 @@ def _create_course(courseId):
         id=f"ID-{courseId}",
         courseId=courseId,
         name=course["name"],
-        description=course["description"],
         created="2024-01-01T12:30:00.000Z",
         modified="2024-01-01T12:30:00.000Z",
         availability=BBAvailability(available="Yes"),

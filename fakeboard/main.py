@@ -82,7 +82,11 @@ async def get_file_attachments(courseId: str, contentId: str) -> Results[BBAttac
 
 @app.get("/v1/courses/{courseId}/contents/{contentId}/attachments/{attachmentId}/download")
 async def download(courseId: str, contentId: str, attachmentId: str) -> None:
-    return RedirectResponse(f"/files/{attachmentId}")
+    return RedirectResponse(f"/files/{courseId}/{attachmentId}")
+
+@app.get("/v1/users/{userId}")
+async def get_user(userId: str):
+    return {"id": "jsanchez"}
 
 @app.get("/v1/system/version")
 async def get_version() -> BBVersion:
