@@ -80,9 +80,9 @@ async def get_file_attachments(courseId: str, contentId: str) -> Results[BBAttac
 
     return {"results": result}
 
-@app.get("/v1/courses/{courseId}/contents/{contentId}/attachments/{attachmentId}/download")
+@app.get("/v1/courses/{courseId}/contents/{contentId}/attachments/{attachmentId}/download", response_class=RedirectResponse, status_code=302)
 async def download(courseId: str, contentId: str, attachmentId: str) -> None:
-    return RedirectResponse(f"/files/{courseId}/{attachmentId}")
+    return f"/learn/api/public/files/{courseId}/{attachmentId}"
 
 @app.get("/v1/users/{userId}")
 async def get_user(userId: str):
