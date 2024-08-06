@@ -32,10 +32,10 @@ class BBVersion(TypedDict):
 
 # Fakeboard API
 
-app = FastAPI(root_path="/learn/api/public", root_path_in_servers=False)
+app = FastAPI(root_path="/learn/api/public", root_path_in_servers=True)
 app.mount("/files", StaticFiles(directory="static"), name="static")
 
-@app.get("/v1/{userId}/courses")
+@app.get("/v1/users/{userId}/courses")
 async def get_user_memberships(userId: str) -> Results[BBMembership]:
     result = await membership.get_memberships(userId)
 

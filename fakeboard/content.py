@@ -37,8 +37,7 @@ async def get_content_children(courseId, contentId):
     courses = db["courses"]
 
     if courseId in courses:
-        content = courses[courseId]["content"]
-
+        content = courses[courseId].get("content", {})
         if contentId in content:
             children = content[contentId]["children"]
             return [_create_content(courseId, id) for id in children]

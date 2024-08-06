@@ -12,11 +12,10 @@ def _create_course(courseId):
     course = db["courses"][courseId]
 
     return BBCourse(
-        id=f"ID-{courseId}",
+        id=courseId,
         courseId=courseId,
         name=course["name"],
-        created="2024-01-01T12:30:00.000Z",
-        modified="2024-01-01T12:30:00.000Z",
+        created=course["created"],
         availability=BBAvailability(available="Yes"),
         enrollment=BBEnrollment(type="")
     )
