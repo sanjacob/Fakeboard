@@ -28,7 +28,8 @@ async def get_contents(courseId):
     courses = db["courses"]
 
     if courseId in courses:
-        contents = courses[courseId]["content"]
+        # Only return direct children
+        contents = courses[courseId]["children"]
         return [_create_content(courseId, id) for id in contents]
     return None
 
