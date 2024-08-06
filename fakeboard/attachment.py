@@ -16,6 +16,6 @@ async def get_file_attachments(courseId, contentId):
         content = courses[courseId]["content"]
 
         if contentId in content:
-            attachments = content[contentId]["attachments"]
+            attachments = content[contentId].get("attachments", [])
             return [_create_attachment(a) for a in attachments]
     return None
